@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra Papel Tijera by HarvyLopz</title>
+
+    <!-- TIPOGRAFIAS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+    <!-- TIPOGRAFIAS -->
+
+        <style>
+
+            body{
+
+                background-image: linear-gradient(to right top, #ff6f91, #f377b0, #df83ca, #c590dc, #a99ce6, #a99ce6, #a99ce6, #a99ce6, #c590dc, #df83ca, #f377b0, #ff6f91);
+                
+                font-family: 'Lalezar', cursive;
+
+                background-attachment: fixed;
+                background-size: cover;
+                background-repeat:no-repeat;
+                background-size: auto;
+                
+                
+            }
+
+            #contenedor-principal{
+                color: white;
+                /* text-shadow: 1px 1px 10px rgb(68, 68, 68); */
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+               
+                align-items: center;
+                
+               
+            }
+
+            #contenedor-titulo-principal{
+                
+                text-align: center;
+           
+                
+            }
+
+            #titulo-principal{
+                margin-top: 1.5rem;
+                font-size: 4rem;
+                color: white;
+                text-shadow: 1px 1px 5px black;
+              
+            }
+
+            #vs{
+                font-size: 4rem;
+                margin: 0;
+                margin-top: 8rem;
+                color: #fdafec;
+                text-shadow: 1px 1px 1px black;
+            }
+
+            .titulo-jugador-maquina{
+                margin: 0;
+                text-shadow: 1px 1px 1px black;
+            }
+
+            #contenedor-botones{
+                display: flex;
+                flex-direction: row;
+                
+            }
+
+            #contenedor-botones-jugador{
+                display: flex;
+                flex-direction: column;
+                margin-right: 2rem;
+            }
+
+            #contenedor-botones-maquina{
+                display: flex;
+                flex-direction: column;
+                margin-left: 2rem;
+            }
+
+            .botones-jugador{
+                background-color: white;
+                border-style: none;
+                width: 6rem;
+                height: 6rem;
+                border-radius: 20%;
+                margin: 0.5rem;
+                box-shadow: 2px 3px 10px black;
+            }
+
+            .botones-maquina{
+                background-color: white;
+                border-style: none;
+                width: 6rem;
+                height: 6rem;
+                border-radius: 20%;
+                margin: 0.5rem;
+                box-shadow: 2px 3px 10px black;
+            }
+
+            .botones-jugador:hover{
+                background-color: #fdafec;
+                border-style: none;
+                width: 6rem;
+                height: 6rem;
+                border-radius: 20%;
+                margin: 0.5rem;
+                box-shadow: 2px 3px 10px black;
+            }
+
+            .botones-jugador:active{
+                box-shadow: inset 0 0 20px rgba(49, 138, 172, 0.5), 0 0 20px rgba(49, 138, 172, 0.4);
+                outline-color: rgba(49, 138, 172, 0);
+                outline-offset: 80px;
+                text-shadow: 1px 1px 6px #fff;
+            }
+
+            #ganador{
+                text-shadow: 1px 1px 5px black;
+            }
+
+            
+
+            .imagenes-botones{
+                width: 4rem;
+              
+            }
+
+            #contenedor-resultados{
+                
+                display: flex;
+                text-shadow: 1px 1px 1px black;
+                
+            }
+
+            .item-contenedor-resultado{
+                margin-top: 0;
+                margin-right: 1rem;
+                margin-left: 1rem;
+            }
+
+            @media (max-width:600px){
+               
+
+               #titulo-principal{
+               font-size: 2.5rem;
+             
+               }
+               #vs{
+               
+               }
+           }
+
+
+            @media (max-width:400px){
+               
+
+                #titulo-principal{
+                margin-top: 1.5rem;
+                font-size: 2rem;
+                color: white;
+                text-shadow: 1px 1px 5px black;
+              
+                }
+                #vs{
+                font-size: 3rem;
+                margin: 0;
+                margin-top: 8rem;
+                color: #fdafec;
+                text-shadow: 1px 1px 1px black;
+                }
+            }
+
+           
+               
+
+               
+           
+            
+        </style>
+</head>
+<body>
+    <main id="contenedor-principal">
+
+        <div id="contenedor-titulo-principal">
+            <h1 id="titulo-principal">Piedra, Papel o Tijera</h1>
+            <!-- <p>Juega contra la computadora</p> -->
+        </div>  
+
+
+        <div id="contenedor-botones">
+            <div id="contenedor-botones-jugador">
+                <h1 class="titulo-jugador-maquina">Jugador</h1>
+                <button type="button" onclick="jugamospapel()"" id="papel" class="botones-jugador"><img class="imagenes-botones" src="resource/papel.png" alt="Papel"></button>
+                <button type="button" onclick="jugamospiedra()"" id="piedra" class="botones-jugador"><img class="imagenes-botones" src="resource/piedra.png" alt="Piedra"></button>
+                <button type="button" onclick="jugamostijera()"" id="tijera" class="botones-jugador"><img class="imagenes-botones" src="resource/Tijera.png" alt="Tijera"></button>
+            </div>
+
+            <h1 id="vs">vs</h1>
+
+            <div id="contenedor-botones-maquina">
+                <h1 class="titulo-jugador-maquina">Maquina</h1>
+                <button type="button" onclick="jugamospapel()"" id="papel-maquina" class="botones-maquina"><img class="imagenes-botones" src="resource/papel.png" alt="Papel"></button>
+                <button type="button" onclick="jugamospiedra()"" id="piedra-maquina" class="botones-maquina"><img class="imagenes-botones" src="resource/piedra.png" alt="Piedra"></button>
+                <button type="button" onclick="jugamostijera()"" id="tijera-maquina" class="botones-maquina"><img class="imagenes-botones" src="resource/Tijera.png" alt="Tijera"></button>
+            </div>
+        </div>
+
+
+        <h2 id="ganador"></h2>
+
+        <div id="contenedor-resultados">
+            <div>
+                <h2 class="item-contenedor-resultado">Usuario: </h2>
+            </div>
+            <div class="contador-numero">
+                <h2 class="item-contenedor-resultado" id="user">0</h2>
+            </div>
+            <div>
+                <h2 class="item-contenedor-resultado" >Maquina: </h2>
+            </div>
+            <div class="contador-numero">
+                <h2 class="item-contenedor-resultado" id="robot">0</h2>
+            </div>
+        </div>
+
+    </main>
+
+
+<!-- JAVASCRIPT -->
+    <script>
+        var usuario="none";
+        var maquina="none";
+        var user = 0;
+        var robot = 0;
+    
+        function evaluacion(usuario){
+            if (usuario == maquina){
+                ganador="ninguno";
+            } else if(usuario == "tijera" && maquina == "papel"){
+                ganador="usuario";
+                
+            } else if (usuario == "papel" && maquina == "piedra"){
+                ganador="usuario";
+                
+            } else if (usuario == "piedra" && maquina == "tijera"){
+                ganador="usuario";
+                
+            } else {
+                ganador = "maquina";
+            
+                
+            }        
+            return ganador
+        } 
+    
+        function maquinaEligiendo(){
+            var aleatorio = Math.floor(Math.random() * (3 - 1 + 1)) + 1
+            aleatorio=parseInt(aleatorio)
+        
+            if (aleatorio == 1){
+                maquina="tijera";
+                
+                setTimeout(() => {
+                    var button_maquina01 = document.getElementById('tijera-maquina');
+                    button_maquina01.style.backgroundColor = '#a99ce6';
+                }, 110);
+            } else if(aleatorio == 2){
+                maquina="piedra";
+                setTimeout(() => {
+                    var button_maquina01 = document.getElementById('piedra-maquina');
+                    button_maquina01.style.backgroundColor = '#a99ce6';
+                }, 110);
+                
+            } else if (aleatorio == 3){
+                maquina="papel";
+                setTimeout(() => {
+                    var button_maquina01 = document.getElementById('papel-maquina');
+                    button_maquina01.style.backgroundColor = '#a99ce6';
+                }, 110);
+            }
+            
+            return maquina
+        }
+    
+        function marcador(ganador){
+            
+            if (ganador == "usuario"){
+                user = document.getElementById('user').innerHTML;
+                user = parseInt(user);
+                user = user + 1;
+                document.getElementById('user').innerHTML=user;
+            } else if (ganador == "maquina"){
+                ser = document.getElementById('robot').innerHTML;
+                robot = parseInt(robot);
+                robot = robot + 1;
+                document.getElementById('robot').innerHTML=robot;
+            }
+
+            
+        }
+
+
+        function cambioColor01(){
+            var button_maquina01 = document.getElementById('papel-maquina');
+            button_maquina01.style.backgroundColor = '#a99ce6';
+            setTimeout(function(){
+            button_maquina01.style.backgroundColor = 'white';
+            }, 100);
+        }
+        function cambioColor02(){
+            var button_maquina02 = document.getElementById('piedra-maquina');
+            button_maquina02.style.backgroundColor = '#a99ce6';
+            setTimeout(function(){
+            button_maquina02.style.backgroundColor = 'white';
+            }, 100);
+        }
+        function cambioColor03(){
+            var button_maquina03 = document.getElementById('tijera-maquina');
+            button_maquina03.style.backgroundColor = '#a99ce6';
+            setTimeout(function(){
+            button_maquina03.style.backgroundColor = 'white';
+            }, 100);
+        }
+
+        function animacionDeSeleccion(){
+            var indice = 0;
+            interval = setInterval(() => {
+                var aleatorio = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+                aleatorio=parseInt(aleatorio);
+                if (aleatorio == 1){
+                    cambioColor01();
+                } else if (aleatorio == 2){
+                    cambioColor02();
+                } else if (aleatorio == 3){
+                    cambioColor03();
+                }
+                
+                indice = indice + 1
+                
+
+                if (indice >= 10) {
+                    clearInterval(interval);
+                }
+            }, 100);
+            
+            }
+
+
+        
+            
+ 
+        
+
+
+        // CUANDO EL USUARIO PRESIONA UN BOTON DE JUGADOR
+    
+        function jugamospiedra(){
+            var variableChingona = document.getElementById('piedra');
+            variableChingona.style.backgroundColor = 'white';
+
+            var variableChingona = document.getElementById('papel');
+            variableChingona.style.backgroundColor = 'white';
+
+            var variableChingona = document.getElementById('tijera');
+            variableChingona.style.backgroundColor = 'white';
+            var variableChingona = document.getElementById('piedra');
+            variableChingona.style.backgroundColor = '#fdafec';
+            animacionDeSeleccion();
+            setTimeout(func, 1000);
+            function func() {
+                usuario = "piedra";
+                maquinaEligiendo();
+                evaluacion(usuario);
+                document.getElementById('ganador').innerHTML=("Ultimo ganador: " + ganador);
+                marcador(ganador);
+                
+            }
+        }
+        function jugamospapel(){
+            var variableChingona = document.getElementById('piedra');
+            variableChingona.style.backgroundColor = 'white';
+
+            var variableChingona = document.getElementById('papel');
+            variableChingona.style.backgroundColor = 'white';
+
+            var variableChingona = document.getElementById('tijera');
+            variableChingona.style.backgroundColor = 'white';
+            var variableChingona = document.getElementById('papel');
+            variableChingona.style.backgroundColor = '#fdafec';
+            animacionDeSeleccion();
+            setTimeout(func, 1000);
+            function func() {
+                usuario = "papel";
+                maquinaEligiendo();
+                evaluacion(usuario);
+                document.getElementById('ganador').innerHTML=("Ultimo ganador: " + ganador);
+                marcador(ganador);
+            }
+            
+   
+        } 
+        function jugamostijera(){
+            var variableChingona = document.getElementById('piedra');
+            variableChingona.style.backgroundColor = 'white';
+
+            var variableChingona = document.getElementById('papel');
+            variableChingona.style.backgroundColor = 'white';
+
+            var variableChingona = document.getElementById('tijera');
+            variableChingona.style.backgroundColor = 'white';
+
+
+
+            var variableChingona = document.getElementById('tijera');
+            variableChingona.style.backgroundColor = '#fdafec';
+            animacionDeSeleccion();
+            setTimeout(func, 1000);
+            function func() {
+                
+                usuario = "tijera";
+                maquinaEligiendo();
+                evaluacion(usuario);
+                document.getElementById('ganador').innerHTML=("Ultimo ganador: " + ganador);
+                marcador(ganador);
+            }
+            
+                
+        }
+
+
+        // CODIGO ABSURDO QUE SI NO CORRE NO SE LIMPIA BIEN AL
+
+       
+
+
+        
+    
+    </script>
+</body>
+</html>

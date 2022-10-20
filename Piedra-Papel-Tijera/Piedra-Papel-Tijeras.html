@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra Papel o Tijera</title>
+    
+    <style>
+
+        :root {
+        --color01: #6A6DAD;
+        --color02: #8C92FA;
+        --color03: #FAF980;
+        --color04: #AD47A7;
+        --color05: #FA73F1;
+        }
+
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            background-color: var(--color03);
+        }
+
+        section{
+
+            display: flex;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        h1{
+            font-size: 2.5rem;
+            margin: 10rem 0 1rem 0;
+        }
+        	
+        h2{
+            font-size: 1rem;
+        }
+
+        div button{
+            border-radius:20px;
+            outline:none;
+            border: 0;
+            margin: .5rem 1rem 0 1rem;
+            background-color: var(--color02);
+        }
+
+        div button:hover{
+            filter: brightness(105%);
+        }
+
+        .manos{
+            padding: .5rem;
+            width: 5rem;
+            height: 5rem;
+        }
+
+
+    
+        
+        #contador h2{
+            font-size: 1.5rem;
+        }
+
+        .contador-numero{
+            background-color: var(--color05);
+            height: 5rem;
+            width: 5rem;
+            border-radius: 35%;
+            
+
+        }
+
+        #user, #robot{
+            color: whitesmoke;
+            font-size: 4rem;
+        }
+
+        
+        #contador{
+            display: flex;
+            /* background-color: antiquewhite; */
+            align-items: baseline; 
+
+        }
+        #contador h2{
+            margin: 2rem 2rem 0 2rem;
+        }
+    </style>
+
+</head>
+<body>
+    <section>
+        <h1>Piedra, Papel o Tijera</h1>
+        <h2>Escoge una opción</h2>
+        <div id="botones">
+            <button type="button" onclick="jugamospiedra()"><img class="manos" src="resource/piedra.png" alt="piedra"></button>
+            <button type="button" onclick="jugamospapel()"><img class="manos" src="./resource/papel.png" alt="papel"></button>
+            <button type="button" onclick="jugamostijera()"><img class="manos" src="./resource/Tijera.png" alt="tijera"></button>
+        </div>
+        <h2 id="ganador"></h2>
+
+        <div id="contador">
+            <div>
+                <h2>Usuario: </h2>
+            </div>
+            <div class="contador-numero">
+                <h2 id="user">0</h2>
+            </div>
+            <div>
+                <h2>Maquina: </h2>
+            </div>
+            <div class="contador-numero">
+                <h2 id="robot">0</h2>
+            </div>
+        </div>
+    </section>
+</body>
+
+
+
+<script>
+    var usuario="none";
+    var maquina="none";
+    var user = 0;
+    var robot = 0;
+
+    function evaluacion(usuario){
+        if (usuario == maquina){
+            ganador="ninguno";
+        } else if(usuario == "tijera" && maquina == "papel"){
+            ganador="usuario";
+            
+        } else if (usuario == "papel" && maquina == "piedra"){
+            ganador="usuario";
+            
+        } else if (usuario == "piedra" && maquina == "tijera"){
+            ganador="usuario";
+            
+        } else {
+            ganador = "maquina";
+        
+            
+        }        
+        return ganador
+    } 
+
+    function maquinaEligiendo(){
+        var aleatorio = Math.floor(Math.random() * (3 - 1 + 1)) + 1
+        console.log(aleatorio)
+        aleatorio=parseInt(aleatorio)
+    
+        if (aleatorio == 1){
+            maquina="tijera"
+        } else if(aleatorio == 2){
+            maquina="piedra"
+        } else if (aleatorio == 3){
+            maquina="papel"
+        }
+        
+        return maquina
+    }
+
+    function marcador(ganador){
+        if (ganador == "usuario"){
+            user = document.getElementById('user').innerHTML;
+            user = parseInt(user);
+            user = user + 1;
+            document.getElementById('user').innerHTML=user;
+        } else if (ganador == "maquina"){
+            ser = document.getElementById('robot').innerHTML;
+            robot = parseInt(robot);
+            robot = robot + 1;
+            document.getElementById('robot').innerHTML=robot;
+        }
+    }
+
+    function jugamospiedra(){
+        usuario = "piedra";
+        maquinaEligiendo();
+        evaluacion(usuario);
+        document.getElementById('ganador').innerHTML=("Gano " + ganador);
+        alert("Gano " + ganador);
+        marcador(ganador);
+
+    }
+    function jugamospapel(){
+        usuario = "papel";
+        maquinaEligiendo();
+        evaluacion(usuario);
+        document.getElementById('ganador').innerHTML=("Gano " + ganador);
+        marcador(ganador);
+        
+    }
+    function jugamostijera(){
+        usuario = "tijera";
+        maquinaEligiendo();
+        evaluacion(usuario);
+        document.getElementById('ganador').innerHTML=("Gano " + ganador);
+        marcador(ganador);
+            
+    }
+
+</script>
+
+</html>
